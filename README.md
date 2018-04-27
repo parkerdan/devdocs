@@ -164,6 +164,34 @@ export default client;
 
 ```
 
-* `redis-server` start local server
+* `start:redis` start local server with chrome GUI
 
-## Graph-Ql
+```bash
+"start:redis": "concurrently --kill-others-on-fail \"yarn start:redis:server\" \"yarn start:redis:commander\" \"wait-on http://localhost:5002 && yarn open:chrome:redis:commander\""
+
+"start:redis:server": "redis-server"
+
+"start:redis:commander": "./node_modules/.bin/redis-commander -p 5002 "
+
+"open:chrome:redis:commander": "open http://localhost:5002/"
+```
+## NPM
+
+* [List config:](https://docs.npmjs.com/misc/config)
+```bash
+npm config list
+```
+
+* Set config:
+```bash
+npm set {key} {value}
+```
+
+.npmrc in root overrides local settings
+
+* Private package settings
+```bash
+always-auth = true /* usually false */
+metrics-registry = https://registry.npmjs.org/
+registry = https://registry.npmjs.org/
+```
