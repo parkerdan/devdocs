@@ -29,6 +29,10 @@ git reset --hard origin/{branch-name}
 
 `xcodebuild --help`
 
+Does the above fail?  Try this:
+`xcode => preferences => locations => Command Line Tools`
+and select your version
+
 * To list the uuid of signing certs
 
 ```bash
@@ -118,6 +122,12 @@ heroku pg:backups:capture
 heroku pg:backups:download
 ```
 
+```
+heroku rollback v{whatever version} -r {whatever you call your remote}
+
+git remote -v   <= will list remotes
+```
+
 ## Postgres
 
 * Copy a `.dump` to localhost
@@ -194,4 +204,42 @@ npm set {key} {value}
 always-auth = true /* usually false */
 metrics-registry = https://registry.npmjs.org/
 registry = https://registry.npmjs.org/
+```
+
+## MONGO
+
+* Initial Installation
+```bash
+brew update
+brew install mongodb
+sudo mkdir -p /data/db
+sudo chmod 0755 /data/db && sudo chown $USER /data/db
+```
+ * Mongo Shell
+ ```bash
+mongo
+ ```
+    * Within Mongo Shell
+    ```bash
+    show dbs  // will list localhost dbs
+    ```
+
+* To Delete a localhost db, within Mongo Shell
+```bash
+use <dbname from whatever show dbs lists>
+db.dropDatabase()
+```
+
+* Copy a remote Mongo from the database URI with the below format
+
+`mongodb://<username>:<password>@<url>:<port>/<database>`
+
+```bash
+mongodump -h <url>:<port> -d <database> -u <username> -p <password>
+```
+`mongodump` will create a folder, within the current directory, `dump/<database>/`
+
+* Copy a dump directory to localhost Mongo
+```bash
+mongorestore -d <dbname, same as the one dropped> <path to dump database dump/<database>/>
 ```
