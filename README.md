@@ -25,6 +25,12 @@ git -B {branch-name}
 git reset --hard origin/{branch-name}
 ```
 
+* Create a local copy of remote branch
+
+```bash
+git checkout -b <my_new_branch> <remote>/<branch_name>
+```
+
 ## iOS
 
 `xcodebuild --help`
