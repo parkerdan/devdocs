@@ -1,4 +1,4 @@
-# List of useful terminal commands for Mac Development
+# List of useful things for Mac Development
 
 ## GIF's
 
@@ -151,8 +151,6 @@ postgres -D /usr/local/var/postgres
 * Unregister service workers `chrome://serviceworker-internals/`
 
 
-# OTHER USERFUL THINGS
-
 ## Redis
 
 This is nice:
@@ -242,4 +240,18 @@ mongodump -h <url>:<port> -d <database> -u <username> -p <password>
 * Copy a dump directory to localhost Mongo
 ```bash
 mongorestore -d <dbname, same as the one dropped> <path to dump database dump/<database>/>
+```
+
+## MYSQL
+
+* start `mysql.server start`
+* stop `mysql.server stop`
+* Enter the `mysql -u root` shell after starting the mysql server
+  * create database `create database {name};` <-- semi-colon IMPORTANT
+  * exit `exit;`
+
+```
+mysql -u root -p
+mysql> SET GLOBAL innodb_fast_shutdown = 1;
+mysql_upgrade -u root -p
 ```
