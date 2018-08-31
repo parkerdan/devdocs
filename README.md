@@ -31,6 +31,12 @@ git reset --hard origin/{branch-name}
 git checkout -b <my_new_branch> <remote>/<branch_name>
 ```
 
+* Change remote origin
+
+```bash
+git remote set-url origin git://new.url.here
+```
+
 ## iOS
 
 `xcodebuild --help`
@@ -260,4 +266,11 @@ mongorestore -d <dbname, same as the one dropped> <path to dump database dump/<d
 mysql -u root -p
 mysql> SET GLOBAL innodb_fast_shutdown = 1;
 mysql_upgrade -u root -p
+```
+
+## Rando
+
+* Lists some good ip stuff
+```bash
+ifconfig
 ```
