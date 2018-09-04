@@ -37,6 +37,12 @@ git checkout -b <my_new_branch> <remote>/<branch_name>
 git remote set-url origin git://new.url.here
 ```
 
+* Ignore changes locally, but keep file in git (goo for secrets)
+
+```bash
+git update-index --skip-worktree src/config/SECRETS.js
+```
+
 ## iOS
 
 `xcodebuild --help`
