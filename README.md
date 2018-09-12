@@ -16,6 +16,8 @@ gifify {PATH_TO_INPUT} -o {PATH_TO_OUTPUT}
 git filter-branch --tree-filter 'rm -f {FILE_PATH}' HEAD
 git update-ref -d refs/original/refs/heads/master
 ```
+<br>
+<br>
 
 * To reset local branch to remote
 
@@ -24,20 +26,25 @@ git fetch origin
 git -B {branch-name}
 git reset --hard origin/{branch-name}
 ```
+<br>
+<br>
 
 * Create a local copy of remote branch
 
 ```bash
 git checkout -b <my_new_branch> <remote>/<branch_name>
 ```
+<br>
+<br>
 
 * Change remote origin
 
 ```bash
 git remote set-url origin git://new.url.here
 ```
-
-* Ignore changes locally, but keep file in git (goo for secrets)
+<br>
+<br>
+* Ignore changes locally, but keep file in git (good for secrets)
 
 ```bash
 git update-index --skip-worktree src/config/SECRETS.js
@@ -50,12 +57,15 @@ git update-index --skip-worktree src/config/SECRETS.js
 Does the above fail?  Try this:
 `xcode => preferences => locations => Command Line Tools`
 and select your version
-
+<br>
+<br>
 * To list the uuid of signing certs
 
 ```bash
 security find-identity -v -p codesigning
 ```
+<br>
+<br>
 
 * To view uuid's of provisioning profiles
 
@@ -63,6 +73,8 @@ security find-identity -v -p codesigning
 /{root}/Library/MobileDevice/Provisioning Profiles
 ```
 then `less {file}` will give you enough info to determine the proper file
+<br>
+<br>
 
 * Archive a X-Code build, replace workspace with `-project {PROJECT_NAME}.xcodeproj` if it's not a workspace instance
 
@@ -71,6 +83,8 @@ then `less {file}` will give you enough info to determine the proper file
 ```bash
 xcodebuild -workspace {PROJECT_NAME}.xcworkspace -scheme {PROJECT_NAME} -configuration Release -archivePath ${archivePath} archive -quiet -sdk iphoneos
 ```
+<br>
+<br>
 
 * Export an IPA
 
@@ -104,12 +118,16 @@ xcodebuild -exportArchive -archivePath ${archivePath} -exportPath ${exportPath} 
 </plist>
 
 ```
+<br>
+<br>
 
 * Direct download link for exterprise apps
 
 ```bash
 itms-services://?action=download-manifest&url={URL_TO_MANIFEST_PLIST.plist}
 ```
+<br>
+<br>
 
 * Push Noticiations `.p12` to `.pem`
 
@@ -124,6 +142,8 @@ openssl pkcs12 -in pushcert.p12 -out pushcert.pem -nodes -clcerts
 ```bash
 ./node_modules/.bin/react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ios/{PROJECT_NAME}/main.jsbundle
 ```
+<br>
+<br>
 
 * Build Android App
 
@@ -153,12 +173,16 @@ git remote -v   <= will list remotes
 ```bash
 pg_restore --verbose --clean --no-acl --no-owner -h localhost -d {DATABSE_NAME} {PATH_TO_DUMP_FILE}
 ```
+<br>
+<br>
 
 * Debug localhost connections
 
 ```bash
 postgres -D /usr/local/var/postgres
 ```
+<br>
+<br>
 
 * Reset locally
 
@@ -189,6 +213,8 @@ const client = redis.createClient(REDIS_PORT_OR_URL, { no_ready_check: true });
 export default client;
 
 ```
+<br>
+<br>
 
 * `start:redis` start local server with chrome GUI
 
@@ -207,11 +233,15 @@ export default client;
 ```bash
 npm config list
 ```
+<br>
+<br>
 
 * Set config:
 ```bash
 npm set {key} {value}
 ```
+<br>
+<br>
 
 .npmrc in root overrides local settings
 
@@ -239,12 +269,15 @@ mongo
     ```bash
     show dbs  // will list localhost dbs
     ```
-
+<br>
+<br>
 * To Delete a localhost db, within Mongo Shell
 ```bash
 use <dbname from whatever show dbs lists>
 db.dropDatabase()
 ```
+<br>
+<br>
 
 * Copy a remote Mongo from the database URI with the below format
 
@@ -254,6 +287,8 @@ db.dropDatabase()
 mongodump -h <url>:<port> -d <database> -u <username> -p <password>
 ```
 `mongodump` will create a folder, within the current directory, `dump/<database>/`
+<br>
+<br>
 
 * Copy a dump directory to localhost Mongo
 ```bash
@@ -271,6 +306,8 @@ mongorestore -d <dbname, same as the one dropped> <path to dump database dump/<d
 ```
 mysql -u root -p
 mysql> SET GLOBAL innodb_fast_shutdown = 1;
+mysql> use mysql;
+mysql> update user set plugin='mysql_native_password' where user='root';
 mysql_upgrade -u root -p
 ```
 
