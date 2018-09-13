@@ -311,6 +311,21 @@ mysql> update user set plugin='mysql_native_password' where user='root';
 mysql_upgrade -u root -p
 ```
 
+<br>
+<br>
+* MySQL all fucked up?  Try this:
+```bash
+mysqld stop
+```
+<br>
+<br>
+* Then this:
+```bash
+brew update
+brew remove mysql
+brew install mysql
+```
+
 ## Rando
 
 * Lists some good ip stuff
