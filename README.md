@@ -26,6 +26,16 @@ git fetch origin
 git -B {branch-name}
 git reset --hard origin/{branch-name}
 ```
+
+<br>
+<br>
+
+* Delete remote branch
+
+```bash
+git push origin --delete {branch_name}
+```
+
 <br>
 <br>
 
