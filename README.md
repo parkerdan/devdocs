@@ -59,6 +59,16 @@ git remote set-url origin git://new.url.here
 ```bash
 git update-index --skip-worktree src/config/SECRETS.js
 ```
+<br>
+<br>
+
+* Replace remote master with a new master by renaming and force pushing
+
+```bash
+git branch -m master old-master
+git branch -m seotweaks master
+git push -f origin master
+```
 
 ## iOS
 
