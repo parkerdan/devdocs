@@ -1,5 +1,13 @@
 # List of useful things for Mac Development
 
+## ATOM
+
+- Get is a bad spot and Atom doesn't open?
+
+```bash
+atom --clear-window-state
+```
+
 ## GIF's
 
 [Install gifify](https://github.com/vvo/gifify)
@@ -10,16 +18,17 @@ gifify {PATH_TO_INPUT} -o {PATH_TO_OUTPUT}
 
 ## GIT
 
-* To completely remove a file from git commit history run these two commands
+- To completely remove a file from git commit history run these two commands
 
 ```bash
 git filter-branch --tree-filter 'rm -f {FILE_PATH}' HEAD
 git update-ref -d refs/original/refs/heads/master
 ```
+
 <br>
 <br>
 
-* To reset local branch to remote
+- To reset local branch to remote
 
 ```bash
 git fetch origin
@@ -30,7 +39,7 @@ git reset --hard origin/{branch-name}
 <br>
 <br>
 
-* Delete remote branch
+- Delete remote branch
 
 ```bash
 git push origin --delete {branch_name}
@@ -39,19 +48,21 @@ git push origin --delete {branch_name}
 <br>
 <br>
 
-* Create a local copy of remote branch
+- Create a local copy of remote branch
 
 ```bash
 git checkout -b <my_new_branch> <remote>/<branch_name>
 ```
+
 <br>
 <br>
 
-* Change remote origin
+- Change remote origin
 
 ```bash
 git remote set-url origin git://new.url.here
 ```
+
 <br>
 <br>
 * Ignore changes locally, but keep file in git (good for secrets)
@@ -59,10 +70,11 @@ git remote set-url origin git://new.url.here
 ```bash
 git update-index --skip-worktree src/config/SECRETS.js
 ```
+
 <br>
 <br>
 
-* Replace remote master with a new master by renaming and force pushing
+- Replace remote master with a new master by renaming and force pushing
 
 ```bash
 git branch -m master old-master
@@ -74,45 +86,49 @@ git push -f origin master
 
 `xcodebuild --help`
 
-Does the above fail?  Try this:
+Does the above fail? Try this:
 `xcode => preferences => locations => Command Line Tools`
 and select your version
 <br>
 <br>
-* To list the uuid of signing certs
+
+- To list the uuid of signing certs
 
 ```bash
 security find-identity -v -p codesigning
 ```
+
 <br>
 <br>
 
-* To view uuid's of provisioning profiles
+- To view uuid's of provisioning profiles
 
 ```bash
 /{root}/Library/MobileDevice/Provisioning Profiles
 ```
+
 then `less {file}` will give you enough info to determine the proper file
 <br>
 <br>
 
-* Archive a X-Code build, replace workspace with `-project {PROJECT_NAME}.xcodeproj` if it's not a workspace instance
+- Archive a X-Code build, replace workspace with `-project {PROJECT_NAME}.xcodeproj` if it's not a workspace instance
 
-* Archive path will be the output file location used for exporting an IPA
+- Archive path will be the output file location used for exporting an IPA
 
 ```bash
 xcodebuild -workspace {PROJECT_NAME}.xcworkspace -scheme {PROJECT_NAME} -configuration Release -archivePath ${archivePath} archive -quiet -sdk iphoneos
 ```
+
 <br>
 <br>
 
-* Export an IPA
+- Export an IPA
 
 ```bash
 xcodebuild -exportArchive -archivePath ${archivePath} -exportPath ${exportPath} -exportOptionsPlist ${exportOptionsPlistPath}
 ```
 
-* Export options plist example
+- Export options plist example
 
 ```xml
 <plist version="1.0">
@@ -136,20 +152,21 @@ xcodebuild -exportArchive -archivePath ${archivePath} -exportPath ${exportPath} 
   <string>{TEAM_ID}</string>
 </dict>
 </plist>
-
 ```
+
 <br>
 <br>
 
-* Direct download link for exterprise apps
+- Direct download link for exterprise apps
 
 ```bash
 itms-services://?action=download-manifest&url={URL_TO_MANIFEST_PLIST.plist}
 ```
+
 <br>
 <br>
 
-* Push Noticiations `.p12` to `.pem`
+- Push Noticiations `.p12` to `.pem`
 
 ```bash
 openssl pkcs12 -in pushcert.p12 -out pushcert.pem -nodes -clcerts
@@ -157,15 +174,16 @@ openssl pkcs12 -in pushcert.p12 -out pushcert.pem -nodes -clcerts
 
 ## React-Native
 
-* Bundle JavaScript
+- Bundle JavaScript
 
 ```bash
 ./node_modules/.bin/react-native bundle --entry-file index.js --platform ios --dev false --bundle-output ios/{PROJECT_NAME}/main.jsbundle
 ```
+
 <br>
 <br>
 
-* Build Android App
+- Build Android App
 
 ```bash
 cd android && ./gradlew clean && ./gradlew assembleRelease && cd ../
@@ -173,7 +191,7 @@ cd android && ./gradlew clean && ./gradlew assembleRelease && cd ../
 
 ## Heroku
 
-*  Create/Download Postgres `.dump` file
+- Create/Download Postgres `.dump` file
 
 ```bash
 heroku pg:backups:capture
@@ -188,55 +206,56 @@ git remote -v   <= will list remotes
 
 ## Postgres
 
-* Copy a `.dump` to localhost
+- Copy a `.dump` to localhost
 
 ```bash
 pg_restore --verbose --clean --no-acl --no-owner -h localhost -d {DATABSE_NAME} {PATH_TO_DUMP_FILE}
 ```
+
 <br>
 <br>
 
-* Debug localhost connections
+- Debug localhost connections
 
 ```bash
 postgres -D /usr/local/var/postgres
 ```
+
 <br>
 <br>
 
-* Reset locally
+- Reset locally
 
 [TO COMPLETELY RESET POSTGRESQL LOCALLY](https://medium.com/@bitadj/completely-uninstall-and-reinstall-psql-on-osx-551390904b86)
 
 ## Chrome
 
-* Unregister service workers `chrome://serviceworker-internals/`
-
+- Unregister service workers `chrome://serviceworker-internals/`
 
 ## Redis
 
 This is nice:
+
 ```js
 /*  Some Constants File */
 export const REDIS_PORT_OR_URL = isDev
   ? Number.parseInt(process.env.REDIS_PORT, 10)
   : process.env.REDISCLOUD_URL;
 
-
 /* Some other file */
-import redis from 'redis';
+import redis from "redis";
 
-import { REDIS_PORT_OR_URL } from '../constants';
+import { REDIS_PORT_OR_URL } from "../constants";
 
 const client = redis.createClient(REDIS_PORT_OR_URL, { no_ready_check: true });
 
 export default client;
-
 ```
+
 <br>
 <br>
 
-* `start:redis` start local server with chrome GUI
+- `start:redis` start local server with chrome GUI
 
 ```bash
 "start:redis": "concurrently --kill-others-on-fail \"yarn start:redis:server\" \"yarn start:redis:commander\" \"wait-on http://localhost:5002 && yarn open:chrome:redis:commander\""
@@ -247,25 +266,31 @@ export default client;
 
 "open:chrome:redis:commander": "open http://localhost:5002/"
 ```
+
 ## NPM
 
-* [List config:](https://docs.npmjs.com/misc/config)
+- [List config:](https://docs.npmjs.com/misc/config)
+
 ```bash
 npm config list
 ```
+
 <br>
 <br>
 
-* Set config:
+- Set config:
+
 ```bash
 npm set {key} {value}
 ```
+
 <br>
 <br>
 
 .npmrc in root overrides local settings
 
-* Private package settings
+- Private package settings
+
 ```bash
 always-auth = true /* usually false */
 metrics-registry = https://registry.npmjs.org/
@@ -274,21 +299,27 @@ registry = https://registry.npmjs.org/
 
 ## MONGO
 
-* Initial Installation
+- Initial Installation
+
 ```bash
 brew update
 brew install mongodb
 sudo mkdir -p /data/db
 sudo chmod 0755 /data/db && sudo chown $USER /data/db
 ```
- * Mongo Shell
- ```bash
+
+- Mongo Shell
+
+
+```bash
 mongo
- ```
+```
+
     * Within Mongo Shell
     ```bash
     show dbs  // will list localhost dbs
     ```
+
 <br>
 <br>
 * To Delete a localhost db, within Mongo Shell
@@ -299,29 +330,31 @@ db.dropDatabase()
 <br>
 <br>
 
-* Copy a remote Mongo from the database URI with the below format
+- Copy a remote Mongo from the database URI with the below format
 
 `mongodb://<username>:<password>@<url>:<port>/<database>`
 
 ```bash
 mongodump -h <url>:<port> -d <database> -u <username> -p <password>
 ```
+
 `mongodump` will create a folder, within the current directory, `dump/<database>/`
 <br>
 <br>
 
-* Copy a dump directory to localhost Mongo
+- Copy a dump directory to localhost Mongo
+
 ```bash
 mongorestore -d <dbname, same as the one dropped> <path to dump database dump/<database>/>
 ```
 
 ## MYSQL
 
-* start `mysql.server start`
-* stop `mysql.server stop`
-* Enter the `mysql -u root` shell after starting the mysql server
-  * create database `create database {name};` <-- semi-colon IMPORTANT
-  * exit `exit;`
+- start `mysql.server start`
+- stop `mysql.server stop`
+- Enter the `mysql -u root` shell after starting the mysql server
+  - create database `create database {name};` <-- semi-colon IMPORTANT
+  - exit `exit;`
 
 ```
 mysql -u root -p
@@ -348,7 +381,8 @@ brew install mysql
 
 ## Rando
 
-* Lists some good ip stuff
+- Lists some good ip stuff
+
 ```bash
 ifconfig
 ```
