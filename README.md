@@ -82,6 +82,15 @@ git branch -m seotweaks master
 git push -f origin master
 ```
 
+<br>
+<br>
+
+- Delete all branches except the one you are on
+
+```bash
+git branch --merged | grep -v \* | xargs git branch -D 
+```
+
 ## iOS
 
 `xcodebuild --help`
