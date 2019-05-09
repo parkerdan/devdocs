@@ -85,10 +85,10 @@ git push -f origin master
 <br>
 <br>
 
-- Delete all branches except the one you are on
+- Delete all branches except master
 
 ```bash
-git branch --merged | grep -v \* | xargs git branch -D 
+git branch | grep -v "master" | xargs git branch -D
 ```
 
 ## iOS
