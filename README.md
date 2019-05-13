@@ -373,6 +373,12 @@ mysql> update user set plugin='mysql_native_password' where user='root';
 mysql_upgrade -u root -p
 ```
 
+- Client does not support authentication protocol requested by server on Sequelize migration???
+
+```
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'
+```
+
 <br>
 <br>
 * MySQL all fucked up?  Try this:
