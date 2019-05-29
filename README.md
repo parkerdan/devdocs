@@ -401,3 +401,9 @@ brew install mysql
 ```bash
 ifconfig
 ```
+
+To stgream and save so to a file run
+
+```bash
+yarn start | tee filename.log
+```
