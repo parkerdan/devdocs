@@ -407,3 +407,10 @@ To stgream and save so to a file run
 ```bash
 yarn start | tee filename.log
 ```
+
+To debug dns and not found errors
+
+8.8.8.8 is google's dns and it should give you the ip of the end server
+```
+nslookup domain 8.8.8.8
+```
