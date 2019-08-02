@@ -416,13 +416,11 @@ nslookup domain 8.8.8.8
 ```
 
 
-## How to set transparency with hex value ?
+## How to set transparency with hex value
 
 For example, you want to set **40%** alpha transparence to `#000000` (black color), you need to add `66` like this `#00000066`.
 
 ### All hex value from 100% to 0% alpha:
-
-<img src="http://i68.tinypic.com/2u7y6p3.png" width="500" alt="sample" title="sample" align="right" vspace="25" />
 
 - **100% — FF**
 - 99% — FC
