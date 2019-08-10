@@ -21,8 +21,8 @@ gifify {PATH_TO_INPUT} -o {PATH_TO_OUTPUT}
 - To completely remove a file from git commit history run these two commands
 
 ```bash
-git filter-branch --tree-filter 'rm -f {FILE_PATH}' HEAD
-git update-ref -d refs/original/refs/heads/master
+git filter-branch --index-filter "git rm -rf --cached --ignore-unmatch path_to_file" HEAD
+git push origin master -f
 ```
 
 <br>
